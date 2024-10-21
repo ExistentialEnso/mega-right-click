@@ -13,9 +13,9 @@ async function pullAllChains() {
 }
 
 async function pullNFTImagesFromChain(chain) {
-    const NFT_URL = `https://api.opensea.io/api/v2/chain/${chain}/account/${WALLET}/nfts?limit=200`
+    const nftURL = `https://api.opensea.io/api/v2/chain/${chain}/account/${WALLET}/nfts?limit=200`
 
-    let response = await axios.get(NFT_URL, {
+    let response = await axios.get(nftURL, {
         headers: {
             "X-API-KEY": OPENSEA_API_KEY
         }
@@ -40,7 +40,11 @@ async function pullNFTImagesFromChain(chain) {
         }
 
         // Pull our next batch of NFTs
-        response = await axios.get(NFT_URL + "&next=" + response.data.next)
+        response = await axios.get(nftURL + "&next=" + response.data.next, {
+            headers: {
+                "X-API-KEY": OPENSEA_API_KEY
+            }
+        })
     }
 }
 
