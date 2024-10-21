@@ -1,13 +1,13 @@
 {
   "name": "mega-right-click",
   "version": "1.0.0",
-  "description": "",
+  "description": "Extremely basic utility for downloading all the images in original quality from an EVM crypto wallet.",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Thorne Melcher",
   "dependencies": {
     "axios": "^1.7.7",
     "image-downloader": "^4.3.0"
