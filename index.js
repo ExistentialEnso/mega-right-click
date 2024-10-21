@@ -32,7 +32,7 @@ async function pullNFTImagesFromChain(chain) {
             try {
                 await download.image({
                     url: nft.image_url,
-                    dest: process.cwd() + `/images/${name}.png`
+                    dest: `${process.cwd()}/images/${name}.png`
                 })
             } catch(e) {
                 console.log(`Error downloading ${nft.name}`)
