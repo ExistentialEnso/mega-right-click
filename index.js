@@ -1,5 +1,6 @@
 import axios from "axios"
 import download from "image-downloader"
+import fs from "fs"
 
 const OPENSEA_API_KEY = "INSERT_KEY_HERE"
 const WALLET = "INSERT_WALLET_HERE"
@@ -13,6 +14,11 @@ async function pullAllChains() {
 }
 
 async function pullNFTImagesFromChain(chain) {
+    // Ensure the output directory exists
+    if(!fs.existsSync(`${process.cwd()}/images`)) {
+        fs.mkdirSync(`${process.cwd()}/images`)
+    }
+
     const nftURL = `https://api.opensea.io/api/v2/chain/${chain}/account/${WALLET}/nfts?limit=200`
 
     let response = await axios.get(nftURL, {
