@@ -45,12 +45,17 @@ async function pullNFTImagesFromChain(chain) {
             }
         }
 
-        // Pull our next batch of NFTs
-        response = await axios.get(nftURL + "&next=" + response.data.next, {
-            headers: {
-                "X-API-KEY": OPENSEA_API_KEY
-            }
-        })
+        if(!response.data.next || response.data.next === "") {
+            break
+        } else {
+            // Pull our next batch of NFTs
+            response = await axios.get(nftURL + "&next=" + response.data.next, {
+                headers: {
+                    "X-API-KEY": OPENSEA_API_KEY
+                }
+            })
+        }
+        
     }
 }
 
